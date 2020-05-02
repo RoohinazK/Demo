@@ -14,8 +14,22 @@ node {
    stage('Maven-Test') {
    sh label: '', script: 'mvn test'
   }
-  
+  stage('Sonar Analysis') {
+   withSonarQubeEnv('Sonar') {
+        sh "mvn sonar:sonar"
+    }
+  }
    stage('Maven-Package') {
    sh label: '', script: 'mvn package'
   }
+  stage('Jfrog Artifacory Upload') {
+        def server= Artifactory.server 'jFrog'
+                    def uploadSpec= """{
+                        "files": [{
+                        "pattern": "target/*.war",
+                        "target": "maven-repo"}]
+                    }"""
+        server.upload(uploadSpec)
+        
+        }
 }
