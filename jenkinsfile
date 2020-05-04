@@ -23,11 +23,11 @@ node {
    sh label: '', script: 'mvn package'
   }
   stage('Jfrog Artifacory Upload') {
-        def server= Artifactory.server 'jFrog'
+        def server= Artifactory.server 'Artifactory'
                     def uploadSpec= """{
                         "files": [{
                         "pattern": "target/*.war",
-                        "target": "maven-repo"}]
+                        "target": "mavenrepo"}]
                     }"""
         server.upload(uploadSpec)
         
@@ -39,11 +39,11 @@ node {
         
         
           stage('Download package from JFrog') {
-            def server= Artifactory.server 'jFrog'
+            def server= Artifactory.server 'Artifactory'
             def downloadSpec = """{
             "files": [
             {
-                "pattern": "maven-repo/capstoneproject-0.0.1-SNAPSHOT.war",
+                "pattern": "mavenrepo/capstoneproject-0.0.1-SNAPSHOT.war",
                 "target": "./capstoneproject.war"
             }
             ]
