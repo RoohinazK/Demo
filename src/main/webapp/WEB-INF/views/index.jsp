@@ -77,7 +77,7 @@
 			style="color: #ddd; background-color: #282E34; text-align: center; padding: 50px 80px; text-align: justify;">
 			<!-- <p>Scroll up and down to really get the feeling of how Parallax
 				Scrolling works.</p> -->
-			<p style="text-align: center;">SaiCharanUppari || Sample MVC for
+			<p style="text-align: center;">Roohi || My Sample MVC for
 				Deployment || ImgSrc: Royal Enfield Site</p>
 		</div>
 	</div>
